@@ -24,7 +24,10 @@ import java.util.List;
 @Controller
 public class MainController {
 
-    private static final String[] NAMES = {"Tom", "Jerry", "Donald"};
+    private static final String[] NAMES = {"Tom", "Jerry", "Donald", "Naruto", "Sasuke", "Sakura", "Kakashi", "Lee",
+            "Ten-ten", "Neji", "Guy", "Ino", "Shikamaru", "Chouji", "Asuma", "Shino", "Kiba", "Hinata", "Kurenai",
+            "Jiraiya", "Tsunade", "Orochimaru", "Minato", "Hashirama", "Tobirama", "Sarutobi", "Gaara", "Kankuro",
+            "Temari"};
 
     @Autowired
     private EmployeeRepositoryCustom employeeRepositoryCustom;
