@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -50,20 +51,23 @@ public class MainController {
 
     @ResponseBody
     @GetMapping("/testInsert")
-    public String testInsert() {
+    public List<Employee> testInsert() {
+        List<Employee> employeeList = new ArrayList<>();
         Employee employee = new Employee();
+        for (int i = 0; i < NAMES.length; i++) {
 
-        long id = this.employeeRepositoryCustom.getMaxEmpId() + 1;
-        int idx = (int) (id % NAMES.length);
-        String fullName = NAMES[idx] + " " + id;
+            long id = this.employeeRepositoryCustom.getMaxEmpId() + 1;
+            int idx = (int) (id % NAMES.length);
+            String fullName = NAMES[idx] + " " + id;
 
-        employee.setId(id);
-        employee.setEmpNo("E" + id);
-        employee.setFullName(fullName);
-        employee.setHireDate(new Date());
-        this.employeeRepository.insert(employee);
-
-        return "Inserted: " + employee;
+            employee.setId(id);
+            employee.setEmpNo("E" + id);
+            employee.setFullName(fullName);
+            employee.setHireDate(new Date());
+            employeeList.add(employee);
+            this.employeeRepository.insert(employee);
+        }
+        return employeeRepository.findAll();
     }
 
     @ResponseBody

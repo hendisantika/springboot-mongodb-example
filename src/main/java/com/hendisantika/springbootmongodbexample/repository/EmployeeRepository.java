@@ -23,6 +23,8 @@ public interface EmployeeRepository extends MongoRepository<Employee, Long> { //
 
     List<Employee> findByFullNameLike(String fullName);
 
+    List<Employee> findAll();
+
     List<Employee> findByHireDateGreaterThan(Date hireDate);
 
     // Supports native JSON query string
