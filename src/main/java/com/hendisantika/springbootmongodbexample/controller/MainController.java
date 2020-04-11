@@ -5,7 +5,7 @@ import com.hendisantika.springbootmongodbexample.repository.EmployeeRepository;
 import com.hendisantika.springbootmongodbexample.repository.EmployeeRepositoryCustom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Date;
@@ -33,7 +33,7 @@ public class MainController {
     private EmployeeRepository employeeRepository;
 
     @ResponseBody
-    @RequestMapping("/")
+    @GetMapping("/")
     public String home() {
         String html = "";
         html += "<ul>";
@@ -46,7 +46,7 @@ public class MainController {
     }
 
     @ResponseBody
-    @RequestMapping("/testInsert")
+    @GetMapping("/testInsert")
     public String testInsert() {
         Employee employee = new Employee();
 
@@ -64,7 +64,7 @@ public class MainController {
     }
 
     @ResponseBody
-    @RequestMapping("/showAllEmployee")
+    @GetMapping("/showAllEmployee")
     public String showAllEmployee() {
 
         List<Employee> employees = this.employeeRepository.findAll();
@@ -78,7 +78,7 @@ public class MainController {
     }
 
     @ResponseBody
-    @RequestMapping("/showFullNameLikeTom")
+    @GetMapping("/showFullNameLikeTom")
     public String showFullNameLikeTom() {
 
         List<Employee> employees = this.employeeRepository.findByFullNameLike("Tom");
@@ -92,7 +92,7 @@ public class MainController {
     }
 
     @ResponseBody
-    @RequestMapping("/deleteAllEmployee")
+    @GetMapping("/deleteAllEmployee")
     public String deleteAllEmployee() {
 
         this.employeeRepository.deleteAll();
